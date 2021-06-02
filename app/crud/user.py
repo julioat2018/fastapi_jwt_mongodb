@@ -7,7 +7,6 @@ from ..models.user import UserInCreate, UserInDB, UserInUpdate
 
 
 async def get_user(conn: AsyncIOMotorClient, username: str) -> UserInDB:
-    print(users_collection_name)
     row = await conn[database_name][users_collection_name].find_one({"username": username})
     if row:
         return UserInDB(**row)
